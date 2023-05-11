@@ -26,8 +26,12 @@ import javax.swing.JList;
 import javax.swing.AbstractListModel;
 
 public class mainpanel extends JFrame {
-	private JTextField textField;
+	public JButton starttripbutton;
 	public mainpanel() {
+		
+		
+		
+		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		getContentPane().setFont(new Font("Microsoft PhagsPa", Font.BOLD, 11));
 		setForeground(new Color(0, 0, 0));
@@ -64,7 +68,7 @@ public class mainpanel extends JFrame {
 		
 		JList listvisit = new JList();
 		listvisit.setModel(new AbstractListModel() {
-			String[] values = new String[] {"1. \u015Ei\u015Fli", "2. Taksim", "......"};
+			String[] values = new String[] {"1. \u015Ei\u015Fli", "2. Taksim"};
 			public int getSize() {
 				return values.length;
 			}
@@ -105,7 +109,7 @@ public class mainpanel extends JFrame {
 		JList listexpl = new JList();
 		listexpl.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
 		listexpl.setModel(new AbstractListModel() {
-			String[] values = new String[] {"1. Beykoz", "2. Be\u015Fikta\u015F", "3. Emin\u00F6n\u00FC", "...."};
+			String[] values = new String[] {"1. Beykoz", "2. Be\u015Fikta\u015F", "3. Emin\u00F6n\u00FC"};
 			public int getSize() {
 				return values.length;
 			}
@@ -137,17 +141,12 @@ public class mainpanel extends JFrame {
 		box2.add(locationinfolbl);
 		locationinfolbl.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 11));
 		
-		JLabel trvltimelbl = new JLabel("Travel Time: ---\r\n");
-		trvltimelbl.setBounds(353, 97, 77, 15);
+		JLabel trvltimelbl = new JLabel("Travel Time:\r\n");
+		trvltimelbl.setBounds(353, 97, 65, 15);
 		getContentPane().add(trvltimelbl);
 		trvltimelbl.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 11));
 		
-		JLabel psblndlbl = new JLabel("Possible Landmarks To Visit:");
-		psblndlbl.setBounds(353, 45, 168, 15);
-		getContentPane().add(psblndlbl);
-		psblndlbl.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 11));
-		
-		JLabel dstnclbl = new JLabel("Distance:  ---\r\n\r\n");
+		JLabel dstnclbl = new JLabel("Distance:");
 		dstnclbl.setBounds(353, 71, 65, 15);
 		getContentPane().add(dstnclbl);
 		dstnclbl.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 11));
@@ -157,7 +156,21 @@ public class mainpanel extends JFrame {
 		panel1.setBounds(342, 35, 202, 168);
 		getContentPane().add(panel1);
 		
-	
+		JLabel lblNewLabel_1 = new JLabel("...");
+		lblNewLabel_1.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 11));
+		lblNewLabel_1.setBounds(428, 385, 46, 14);
+		getContentPane().add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("....");
+		lblNewLabel_2.setBounds(428, 97, 46, 14);
+		getContentPane().add(lblNewLabel_2);
+		
+		JLabel psblndlbl = new JLabel("Landmarks:");
+		psblndlbl.setBounds(352, 45, 60, 15);
+		getContentPane().add(psblndlbl);
+		psblndlbl.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 11));
+		
+	starttripbutton = starttripB;
 		
 		
 	}
