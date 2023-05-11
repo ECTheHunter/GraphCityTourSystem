@@ -41,6 +41,7 @@ public class mainpanel extends JFrame {
 		JButton starttripB = new JButton("Start Trip");
 		starttripB.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				System.out.println("gay");
 			}
 		});
 		starttripB.setToolTipText("");
