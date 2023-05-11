@@ -28,6 +28,7 @@ import javax.swing.AbstractListModel;
 public class mainpanel extends JFrame {
 	private JTextField textField;
 	public mainpanel() {
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		getContentPane().setFont(new Font("Microsoft PhagsPa", Font.BOLD, 11));
 		setForeground(new Color(0, 0, 0));
 		setFont(new Font("Microsoft PhagsPa", Font.BOLD, 11));
