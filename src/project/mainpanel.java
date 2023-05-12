@@ -24,10 +24,32 @@ import java.awt.event.ActionEvent;
 import java.awt.Window.Type;
 import javax.swing.JList;
 import javax.swing.AbstractListModel;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 
 public class mainpanel extends JFrame {
 	public JButton starttripbutton;
+	public JButton finishtripbutton;
+	public JList listvisit1;
+	public JPanel panell;
+	public JLabel currentregion; 
+	public JLabel regionlabel;
+	public JLabel explorelbl;
+	public JList listexplore;
+	public JLabel visitplace;
+	public JLabel locationinfo;
+	public JLabel traveltime;
+	public JLabel distancelbl;
+	public JLabel timelbl;
+	public JLabel landmarklbl;
+	public JLabel dstncl;
+	public JLabel landlbl;
+	public JPanel panel11;
+	public Box box11;
+	public Box boxx;
+	public Box box22;
 	public mainpanel() {
+		setResizable(false);
 		
 		
 		
@@ -151,27 +173,54 @@ public class mainpanel extends JFrame {
 		getContentPane().add(dstnclbl);
 		dstnclbl.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 11));
 		
-		JPanel panel1 = new JPanel();
-		panel1.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		panel1.setBounds(342, 35, 202, 168);
-		getContentPane().add(panel1);
-		
-		JLabel lblNewLabel_1 = new JLabel("...");
-		lblNewLabel_1.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 11));
-		lblNewLabel_1.setBounds(428, 385, 46, 14);
-		getContentPane().add(lblNewLabel_1);
-		
-		JLabel lblNewLabel_2 = new JLabel("....");
-		lblNewLabel_2.setBounds(428, 97, 46, 14);
-		getContentPane().add(lblNewLabel_2);
+		JLabel ttlbl = new JLabel("www");
+		ttlbl.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 11));
+		ttlbl.setBounds(428, 97, 46, 14);
+		getContentPane().add(ttlbl);
 		
 		JLabel psblndlbl = new JLabel("Landmarks:");
 		psblndlbl.setBounds(352, 45, 60, 15);
 		getContentPane().add(psblndlbl);
 		psblndlbl.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 11));
 		
+	
+	JLabel dlbl = new JLabel("www");
+	dlbl.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 11));
+	dlbl.setBounds(411, 72, 46, 14);
+	getContentPane().add(dlbl);
+	
+	JLabel llbl = new JLabel("www");
+	llbl.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 11));
+	llbl.setBounds(422, 45, 46, 14);
+	getContentPane().add(llbl);
+	
+	JPanel panel1 = new JPanel();
+	panel1.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
+	panel1.setBounds(342, 35, 201, 161);
+	getContentPane().add(panel1);
+		
 	starttripbutton = starttripB;
-		
-		
+	finishtripbutton = fnshtripB;
+	listvisit1 = listvisit;
+	panell= panel; 
+	currentregion = currentlabel;
+	regionlabel =regionlbl;
+	explorelbl =slctplcexplbl;
+	listexplore= listexpl;
+	visitplace = vstplclabel;
+	locationinfo =locationinfolbl;
+	traveltime = trvltimelbl;
+	distancelbl = dstnclbl;
+	timelbl = ttlbl;
+	landmarklbl = psblndlbl;
+	dstncl = dlbl;
+	landlbl= llbl;
+	panel11= panel1;
+	panel1.setLayout(null);
+	box11= box1;
+	boxx=box;
+	box22=box2;
+	
+	
 	}
 }
