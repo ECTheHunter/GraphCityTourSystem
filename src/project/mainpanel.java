@@ -26,6 +26,8 @@ import javax.swing.JList;
 import javax.swing.AbstractListModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import java.awt.FlowLayout;
+import javax.swing.UIManager;
 
 public class mainpanel extends JFrame {
 	public JButton starttripbutton;
@@ -55,12 +57,12 @@ public class mainpanel extends JFrame {
 		
 		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		getContentPane().setFont(new Font("Microsoft PhagsPa", Font.BOLD, 11));
+		getContentPane().setFont(new Font("Microsoft PhagsPa", Font.BOLD, 20));
 		setForeground(new Color(0, 0, 0));
 		setFont(new Font("Microsoft PhagsPa", Font.BOLD, 11));
 		setType(Type.UTILITY);
 		getContentPane().setForeground(new Color(0, 0, 0));
-		getContentPane().setBackground(new Color(245, 255, 250));
+		getContentPane().setBackground(new Color(240, 248, 255));
 		setBackground(new Color(0, 0, 0));
 		setTitle("Travel map:");
 		getContentPane().setLayout(null);
@@ -72,10 +74,10 @@ public class mainpanel extends JFrame {
 			}
 		});
 		starttripB.setToolTipText("");
-		starttripB.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 12));
+		starttripB.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 20));
+		starttripB.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
 		starttripB.setForeground(new Color(0, 0, 0));
-		starttripB.setBackground(new Color(0, 0, 0));
-		starttripB.setBounds(374, 224, 138, 35);
+		starttripB.setBounds(580, 293, 214, 53);
 		getContentPane().add(starttripB);
 		
 		JButton fnshtripB = new JButton("Finish Trip");
@@ -83,12 +85,14 @@ public class mainpanel extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		fnshtripB.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 12));
-		fnshtripB.setBackground(new Color(0, 0, 0));
-		fnshtripB.setBounds(374, 275, 138, 35);
+		fnshtripB.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 20));
+		fnshtripB.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
+		fnshtripB.setForeground(new Color(0, 0, 0));
+		fnshtripB.setBounds(580, 388, 214, 53);
 		getContentPane().add(fnshtripB);
 		
 		JList listvisit = new JList();
+		listvisit.setForeground(Color.BLACK);
 		listvisit.setModel(new AbstractListModel() {
 			String[] values = new String[] {"1. \u015Ei\u015Fli", "2. Taksim"};
 			public int getSize() {
@@ -98,38 +102,25 @@ public class mainpanel extends JFrame {
 				return values[index];
 			}
 		});
-		listvisit.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 11));
-		listvisit.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		listvisit.setBackground(SystemColor.menu);
-		listvisit.setBounds(10, 35, 152, 286);
+		listvisit.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 20));
+		listvisit.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
+		listvisit.setBackground(new Color(224, 255, 255));
+		listvisit.setBounds(10, 68, 261, 422);
 		getContentPane().add(listvisit);
-		
-		JPanel panel = new JPanel();
-		panel.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		panel.setBounds(172, 11, 160, 66);
-		getContentPane().add(panel);
-		
-		JLabel currentlabel = new JLabel("Current Region:");
-		panel.add(currentlabel);
-		currentlabel.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 11));
-		
-		JLabel regionlbl = new JLabel("");
-		regionlbl.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 11));
-		panel.add(regionlbl);
 		
 		Box box1 = Box.createHorizontalBox();
 		box1.setForeground(SystemColor.inactiveCaptionBorder);
 		box1.setBackground(SystemColor.inactiveCaptionBorder);
-		box1.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		box1.setBounds(172, 88, 160, 23);
+		box1.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
+		box1.setBounds(277, 101, 253, 47);
 		getContentPane().add(box1);
 		
 		JLabel slctplcexplbl = new JLabel("Select Place To Explore:");
 		box1.add(slctplcexplbl);
-		slctplcexplbl.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 11));
+		slctplcexplbl.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 20));
 		
 		JList listexpl = new JList();
-		listexpl.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
+		listexpl.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
 		listexpl.setModel(new AbstractListModel() {
 			String[] values = new String[] {"1. Beykoz", "2. Be\u015Fikta\u015F", "3. Emin\u00F6n\u00FC"};
 			public int getSize() {
@@ -139,86 +130,106 @@ public class mainpanel extends JFrame {
 				return values[index];
 			}
 		});
-		listexpl.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 11));
-		listexpl.setBackground(SystemColor.menu);
-		listexpl.setBounds(172, 113, 160, 208);
+		listexpl.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 20));
+		listexpl.setBackground(new Color(224, 255, 255));
+		listexpl.setBounds(277, 150, 253, 338);
 		getContentPane().add(listexpl);
 		
 		Box box = Box.createHorizontalBox();
 		box.setBackground(SystemColor.menu);
-		box.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		box.setBounds(10, 11, 152, 23);
+		box.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
+		box.setBounds(10, 11, 261, 53);
 		getContentPane().add(box);
-		
-		JLabel vstplclabel = new JLabel("Visited Places:");
-		box.add(vstplclabel);
-		vstplclabel.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 11));
-		
-		Box box2 = Box.createHorizontalBox();
-		box2.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		box2.setBounds(342, 11, 202, 23);
-		getContentPane().add(box2);
-		
-		JLabel locationinfolbl = new JLabel("Location information:");
-		box2.add(locationinfolbl);
-		locationinfolbl.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 11));
-		
-		JLabel trvltimelbl = new JLabel("Travel Time:\r\n");
-		trvltimelbl.setBounds(353, 97, 65, 15);
-		getContentPane().add(trvltimelbl);
-		trvltimelbl.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 11));
-		
-		JLabel dstnclbl = new JLabel("Distance:");
-		dstnclbl.setBounds(353, 71, 65, 15);
-		getContentPane().add(dstnclbl);
-		dstnclbl.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 11));
-		
-		JLabel ttlbl = new JLabel("www");
-		ttlbl.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 11));
-		ttlbl.setBounds(428, 97, 46, 14);
-		getContentPane().add(ttlbl);
-		
-		JLabel psblndlbl = new JLabel("Landmarks:");
-		psblndlbl.setBounds(352, 45, 60, 15);
-		getContentPane().add(psblndlbl);
-		psblndlbl.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 11));
-		
-	
-	JLabel dlbl = new JLabel("www");
-	dlbl.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 11));
-	dlbl.setBounds(411, 72, 46, 14);
-	getContentPane().add(dlbl);
-	
-	JLabel llbl = new JLabel("www");
-	llbl.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 11));
-	llbl.setBounds(422, 45, 46, 14);
-	getContentPane().add(llbl);
 	
 	JPanel panel1 = new JPanel();
-	panel1.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-	panel1.setBounds(342, 35, 201, 161);
+	panel1.setBackground(new Color(224, 255, 255));
+	panel1.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
+	panel1.setBounds(534, 55, 305, 192);
 	getContentPane().add(panel1);
 		
 	starttripbutton = starttripB;
 	finishtripbutton = fnshtripB;
 	listvisit1 = listvisit;
-	panell= panel; 
-	currentregion = currentlabel;
-	regionlabel =regionlbl;
 	explorelbl =slctplcexplbl;
 	listexplore= listexpl;
-	visitplace = vstplclabel;
-	locationinfo =locationinfolbl;
-	traveltime = trvltimelbl;
-	distancelbl = dstnclbl;
-	timelbl = ttlbl;
-	landmarklbl = psblndlbl;
-	dstncl = dlbl;
-	landlbl= llbl;
 	panel11= panel1;
 	panel1.setLayout(null);
+	
+	JLabel llbl = new JLabel("www");
+	llbl.setBounds(134, 24, 88, 19);
+	panel1.add(llbl);
+	llbl.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 20));
+	landlbl= llbl;
+	
+	
+	JLabel dlbl = new JLabel("www");
+	dlbl.setBounds(116, 72, 106, 19);
+	panel1.add(dlbl);
+	dlbl.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 20));
+	dstncl = dlbl;
+	
+	JLabel ttlbl = new JLabel("www");
+	ttlbl.setBounds(144, 127, 106, 25);
+	panel1.add(ttlbl);
+	ttlbl.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 20));
+	timelbl = ttlbl;
+	
+	JLabel psblndlbl = new JLabel("Landmarks:");
+	psblndlbl.setBounds(10, 21, 114, 25);
+	panel1.add(psblndlbl);
+	psblndlbl.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 20));
+	landmarklbl = psblndlbl;
+	
+	JLabel dstnclbl = new JLabel("Distance:");
+	dstnclbl.setBounds(10, 67, 96, 29);
+	panel1.add(dstnclbl);
+	dstnclbl.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 20));
+	distancelbl = dstnclbl;
+	
+	JLabel trvltimelbl = new JLabel("Travel Time:\r\n");
+	trvltimelbl.setBounds(10, 127, 124, 25);
+	panel1.add(trvltimelbl);
+	trvltimelbl.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 20));
+	traveltime = trvltimelbl;
 	box11= box1;
 	boxx=box;
+	
+	JLabel vstplclabel = new JLabel("Visited Places:");
+	vstplclabel.setBounds(71, 22, 144, 35);
+	getContentPane().add(vstplclabel);
+	vstplclabel.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 20));
+	visitplace = vstplclabel;
+	
+	JLabel locationinfolbl = new JLabel("Location information:");
+	locationinfolbl.setBounds(580, 22, 214, 22);
+	getContentPane().add(locationinfolbl);
+	locationinfolbl.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 20));
+	locationinfo =locationinfolbl;
+	
+	JLabel regionlbl = new JLabel("www");
+	regionlbl.setBounds(329, 50, 148, 26);
+	getContentPane().add(regionlbl);
+	regionlbl.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 20));
+	regionlabel =regionlbl;
+	
+	JLabel currentlabel = new JLabel("Current Region:");
+	currentlabel.setBounds(329, 25, 148, 26);
+	getContentPane().add(currentlabel);
+	currentlabel.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 20));
+	currentregion = currentlabel;
+	
+	JPanel panel = new JPanel();
+	panel.setBackground(new Color(224, 255, 255));
+	panel.setBounds(277, 11, 253, 86);
+	getContentPane().add(panel);
+	panel.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
+	panell= panel;
+	panel.setLayout(null);
+	
+	Box box2 = Box.createHorizontalBox();
+	box2.setBounds(534, 11, 305, 40);
+	getContentPane().add(box2);
+	box2.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
 	box22=box2;
 	
 	
