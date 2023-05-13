@@ -13,6 +13,9 @@ public class Test {
 		citymap.addVertex(sisliRegion);
 		citymap.AddEdge(new RegionEdge(besiktasRegion, sisliRegion, 5, 2));
 		citymap.AddEdge(new RegionEdge(sisliRegion, besiktasRegion, 5, 2));
+		citymap.PrintAdjacentVertices(besiktasRegion);
+		citymap.PrintAdjacentVertices(sisliRegion);
+
 
 	}
 

@@ -23,4 +23,13 @@ public class Graph<T> {
 		temp.add(newedge);
 		map.put(newedge.getSrc(), temp);
 	}
+	public void PrintAdjacentVertices(Region vertex) {
+		LinkedList<Edge<T>> ll = map.get(vertex);
+		for (Edge<T> edge : ll) {
+			Edge<T> e = (Edge<T>)new RegionEdge();
+			e = edge;
+			RegionEdge re = (RegionEdge)e;
+			System.out.println(re.getDistance());
+		}
+	}
 }
