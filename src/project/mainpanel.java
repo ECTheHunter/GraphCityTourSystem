@@ -61,6 +61,7 @@ public class mainpanel extends JFrame {
 		setForeground(new Color(0, 0, 0));
 		setFont(new Font("Microsoft PhagsPa", Font.BOLD, 11));
 		setType(Type.UTILITY);
+		setSize(866, 540);
 		getContentPane().setForeground(new Color(0, 0, 0));
 		getContentPane().setBackground(new Color(240, 248, 255));
 		setBackground(new Color(0, 0, 0));
