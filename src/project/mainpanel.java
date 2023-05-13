@@ -50,10 +50,9 @@ public class mainpanel extends JFrame {
 	public Box box11;
 	public Box boxx;
 	public Box box22;
-	public int WIDTH=900;
-	public int HEIGHT=547;
+	
 	public mainpanel() {
-		this.setSize(860, 540);
+		
 		setResizable(false);
 		
 		
