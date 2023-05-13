@@ -53,7 +53,7 @@ public class mainpanel extends JFrame {
 	public int WIDTH=900;
 	public int HEIGHT=547;
 	public mainpanel() {
-		this.setSize(WIDTH, HEIGHT);
+		this.setSize(860, 540);
 		setResizable(false);
 		
 		
@@ -235,7 +235,7 @@ public class mainpanel extends JFrame {
 	getContentPane().add(box2);
 	box2.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
 	box22=box2;
-	
+	setVisible(true);
 	
 	}
 }
