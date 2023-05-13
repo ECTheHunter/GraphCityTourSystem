@@ -216,7 +216,7 @@ public class mainpanel extends JFrame {
 	regionlabel =regionlbl;
 	
 	JLabel currentlabel = new JLabel("Current Region:");
-	currentlabel.setBounds(329, 25, 148, 26);
+	currentlabel.setBounds(318, 25, 178, 26);
 	getContentPane().add(currentlabel);
 	currentlabel.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 20));
 	currentregion = currentlabel;
