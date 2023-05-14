@@ -41,4 +41,7 @@ public class Graph<T> {
 			System.out.println(re.getSrc() +" "+ re.getDistance() + " "+re.getDst());
 		}
 	}
+	public void setCurrentvertex(T currentvertex) {
+		this.currentvertex = currentvertex;
+	}
 }
