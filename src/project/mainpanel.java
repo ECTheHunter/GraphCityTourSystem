@@ -1,5 +1,6 @@
 package project;
 import java.awt.BorderLayout;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -14,6 +15,7 @@ import javax.swing.JFormattedTextField;
 import java.awt.Color;
 import java.awt.SystemColor;
 import javax.swing.JTextPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.Box;
 import javax.swing.border.LineBorder;
 import java.awt.Component;
@@ -73,7 +75,11 @@ public class mainpanel extends JFrame {
 		JButton starttripB = new JButton("Start Trip");
 		starttripB.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int idx = listexplore.getSelectedIndex();
+				if(idx!=-1)
 				System.out.println("gay");
+				else
+					System.out.println("Please, choose a region in the list");
 			}
 		});
 		starttripB.setToolTipText("");
@@ -157,6 +163,9 @@ public class mainpanel extends JFrame {
 	listexplore= listexpl;
 	panel11= panel1;
 	panel1.setLayout(null);
+	listvisit1.setEnabled(false);
+	listexplore.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+	
 	
 	JLabel llbl = new JLabel("www");
 	llbl.setBounds(134, 24, 88, 19);
