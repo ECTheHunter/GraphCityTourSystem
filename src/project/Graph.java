@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 
+import javax.swing.DefaultListModel;
+
 public class Graph<T> {
 	private T currentvertex;
 	private HashMap<T, LinkedList<Edge<T>>> map = new HashMap<T, LinkedList<Edge<T>>>();
@@ -41,6 +43,33 @@ public class Graph<T> {
 			System.out.println(re.getSrc() +" "+ re.getDistance() + " "+re.getDst());
 		}
 	}
+	public float getTimes(Region vertex,Region vertex1) {
+		LinkedList<Edge<T>> ll = map.get(vertex);
+    	float time = 0;
+		for (Edge<T> edge : ll) {
+			Edge<T> e = (Edge<T>)new RegionEdge();
+			e = edge;
+			RegionEdge re = (RegionEdge)e;
+			if(re.getDst().getName()==vertex1.getName())
+			time = re.getTraveltime();
+		}
+		return time;
+	}
+    public float getDistances(Region vertex,Region vertex1) {
+    	LinkedList<Edge<T>> ll = map.get(vertex);
+    	float distance = 0;
+		for (Edge<T> edge : ll) {
+			Edge<T> e = (Edge<T>)new RegionEdge();
+			e = edge;
+			RegionEdge re = (RegionEdge)e;
+			if(re.getDst().getName()==vertex1.getName())
+			distance = re.getDistance();
+		}
+		return distance;
+	}
+	
+		
+	
 	public void setCurrentvertex(T currentvertex) {
 		this.currentvertex = currentvertex;
 	}

@@ -5,31 +5,48 @@ import java.util.Stack;
 public class TripManager {
 
 	private static TripManager instance;
-	private Graph graph;
+	private Graph<Region> graph;
 	private Stack<Region> visitedplaces = new Stack<Region>();
 
 	public Stack<Region> getVisitedplaces() {
 		return visitedplaces;
 	}
 
-	public Graph getGraph() {
+	public Graph<Region> getGraph() {
 		return graph;
 	}
 
 	private TripManager() {
-		Region sisliRegion = new Region("sisli", "sislilandmarks");
-		Region besiktasRegion = new Region("besiktas", "besiktaslandmarks");
-		Region beyogluregion = new Region("beyoglu", "beyoglulandmarks");
+		Region sisliRegion = new Region("Şişli", "sislilandmarks");
+		Region besiktasRegion = new Region("Beşiktaş", "besiktaslandmarks");
+		Region beyogluregion = new Region("Beyoğlu", "beyoglulandmarks");
+		Region uskudarregion = new Region("Üsküdar", "uskudarlandmarks");
+		Region kadikoyregion = new Region("Kadiköy", "kadikoylandmarks");
+		Region umraniyeregion = new Region("Ümraniye", "umraniyelandmarks");
+		Region fatihregion = new Region("Fatih", "fatihlandmarks");
+		Region malteperegion = new Region("Maltepe", "maltepelandmarks");
 		Graph<Region> citymap = new Graph<Region>();
-		graph = citymap;
 		citymap.addVertex(besiktasRegion);
 		citymap.addVertex(sisliRegion);
 		citymap.addVertex(beyogluregion);
-		citymap.AddEdge(new RegionEdge(besiktasRegion, sisliRegion, 5, 2), true);
-		citymap.AddEdge(new RegionEdge(besiktasRegion, beyogluregion, 3, 1), true);
-		citymap.PrintAdjacentVertices(besiktasRegion);
+		citymap.addVertex(uskudarregion);
+		citymap.addVertex(kadikoyregion);
+		citymap.addVertex(umraniyeregion);
+		citymap.addVertex(fatihregion);
+		citymap.addVertex(malteperegion);
+		citymap.AddEdge(new RegionEdge(besiktasRegion, sisliRegion, 6.6f, 85), true);
+		citymap.AddEdge(new RegionEdge(beyogluregion, fatihregion, 5.2f, 71), true);
+		citymap.AddEdge(new RegionEdge(sisliRegion, beyogluregion, 2.2f, 25), true);
+		citymap.AddEdge(new RegionEdge(uskudarregion, kadikoyregion, 6.8f, 85), true);
+		citymap.AddEdge(new RegionEdge(uskudarregion, umraniyeregion, 6.5f, 82), true);
+		citymap.AddEdge(new RegionEdge(uskudarregion, besiktasRegion, 8.6f, 127), true);
+		citymap.AddEdge(new RegionEdge(kadikoyregion, umraniyeregion, 8.0f, 127), true);
+		citymap.AddEdge(new RegionEdge(kadikoyregion, malteperegion, 13.7f, 189), true);
+		citymap.AddEdge(new RegionEdge(umraniyeregion, malteperegion, 11.6f, 160), true);
+		graph = citymap;
+		/*citymap.PrintAdjacentVertices(besiktasRegion);
 		citymap.PrintAdjacentVertices(sisliRegion);
-		citymap.PrintAdjacentVertices(beyogluregion);
+		citymap.PrintAdjacentVertices(beyogluregion);*/
 	}
 	public static TripManager getinstance() {
 		

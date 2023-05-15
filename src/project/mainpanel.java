@@ -17,14 +17,18 @@ import java.awt.SystemColor;
 import javax.swing.JTextPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.Box;
+import javax.swing.DefaultListModel;
 import javax.swing.border.LineBorder;
 import java.awt.Component;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.EventObject;
+import java.util.LinkedList;
 import java.awt.event.ActionEvent;
 import java.awt.Window.Type;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.AbstractListModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -52,15 +56,24 @@ public class mainpanel extends JFrame {
 	public Box box11;
 	public Box boxx;
 	public Box box22;
+	DefaultListModel<String> exploreplaces;
+	DefaultListModel<String> visitedplaces;
+	ArrayList<Region> explorerPlaces;
+	Region previousRegion;
+	float totalTimes =0;
+	float TotalDistances=0;
 	
 	public mainpanel() {
-		
+		visitedplaces = new DefaultListModel<String>();
+		previousRegion = new Region("Demo","");
+		exploreplaces = new DefaultListModel<String>();
 		setResizable(false);
+		fillup();
+			
 		
 		
 		
-		
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setFont(new Font("Microsoft PhagsPa", Font.BOLD, 20));
 		setForeground(new Color(0, 0, 0));
 		setFont(new Font("Microsoft PhagsPa", Font.BOLD, 11));
@@ -73,15 +86,8 @@ public class mainpanel extends JFrame {
 		getContentPane().setLayout(null);
 		
 		JButton starttripB = new JButton("Start Trip");
-		starttripB.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				int idx = listexplore.getSelectedIndex();
-				if(idx!=-1)
-				System.out.println("gay");
-				else
-					System.out.println("Please, choose a region in the list");
-			}
-		});
+		
+	
 		starttripB.setToolTipText("");
 		starttripB.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 20));
 		starttripB.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
@@ -130,15 +136,7 @@ public class mainpanel extends JFrame {
 		
 		JList listexpl = new JList();
 		listexpl.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
-		listexpl.setModel(new AbstractListModel() {
-			String[] values = new String[] {"1. Beykoz", "2. Be\u015Fikta\u015F", "3. Emin\u00F6n\u00FC"};
-			public int getSize() {
-				return values.length;
-			}
-			public Object getElementAt(int index) {
-				return values[index];
-			}
-		});
+		listexpl.setModel(exploreplaces);
 		listexpl.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 20));
 		listexpl.setBackground(new Color(224, 255, 255));
 		listexpl.setBounds(277, 150, 253, 338);
@@ -165,22 +163,23 @@ public class mainpanel extends JFrame {
 	panel1.setLayout(null);
 	listvisit1.setEnabled(false);
 	listexplore.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+	listvisit1.setModel(visitedplaces);
 	
 	
-	JLabel llbl = new JLabel("www");
+	JLabel llbl = new JLabel("");
 	llbl.setBounds(134, 24, 88, 19);
 	panel1.add(llbl);
 	llbl.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 20));
 	landlbl= llbl;
 	
 	
-	JLabel dlbl = new JLabel("www");
+	JLabel dlbl = new JLabel("");
 	dlbl.setBounds(116, 72, 106, 19);
 	panel1.add(dlbl);
 	dlbl.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 20));
 	dstncl = dlbl;
 	
-	JLabel ttlbl = new JLabel("www");
+	JLabel ttlbl = new JLabel("");
 	ttlbl.setBounds(144, 127, 106, 25);
 	panel1.add(ttlbl);
 	ttlbl.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 20));
@@ -218,7 +217,7 @@ public class mainpanel extends JFrame {
 	locationinfolbl.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 20));
 	locationinfo =locationinfolbl;
 	
-	JLabel regionlbl = new JLabel("www");
+	JLabel regionlbl = new JLabel("");
 	regionlbl.setBounds(329, 50, 148, 26);
 	getContentPane().add(regionlbl);
 	regionlbl.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 20));
@@ -244,6 +243,67 @@ public class mainpanel extends JFrame {
 	box2.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
 	box22=box2;
 	setVisible(true);
-	
+		starttripB.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			    String name = (String)listexplore.getSelectedValue();
+			    
+				int idx = listexplore.getSelectedIndex();
+				if(idx!=-1) {
+				exploreplaces.removeAllElements();
+				
+				
+				for(Region edge : TripManager.getinstance().getGraph().getMap().keySet()) {
+					if(edge.getName()==name) {
+						timelbl.setText(TripManager.getinstance().getGraph().getTimes(edge, previousRegion)+" min");
+						totalTimes+=TripManager.getinstance().getGraph().getTimes(edge, previousRegion);
+						dstncl.setText(TripManager.getinstance().getGraph().getDistances(edge, previousRegion)+" km");
+						TotalDistances+= TripManager.getinstance().getGraph().getDistances(edge, previousRegion);
+						landlbl.setText(previousRegion.getLandmarks());
+						previousRegion = edge;
+						TripManager.getinstance().addtovisitedplaces(edge);
+						
+						for (int i = 0; i <= TripManager.getinstance().getGraph().getMap().get(edge).size()-1; i++) {
+							exploreplaces.addElement(TripManager.getinstance().getGraph().getMap().get(edge).get(i).getDst().toString());
+							
+						}
+					} 
+				}
+				if(visitedplaces.size()!=0)
+					visitedplaces.removeAllElements();
+				
+				regionlabel.setText(name);
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "Please, choose a region in the list");
+				}
+			}
+		});
+		finishtripbutton.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				int b = TripManager.getinstance().getVisitedplaces().size();
+				for (int i =0;i<b;i++) {
+					if(TripManager.getinstance().getVisitedplaces()!=null)
+					visitedplaces.addElement(TripManager.getinstance().getVisitedplaces().pop().getName());	
+				}
+				
+				timelbl.setText(totalTimes+"min (Total)");
+				dstncl.setText(TotalDistances+"km (Total)");
+				totalTimes=0;
+				TotalDistances=0;
+				fillup();
+				regionlabel.setText("");
+				//landlbl.setText("");
+			}
+			
+		});
 	}
+	public void fillup() {
+		if(exploreplaces.size()!=8) {
+			exploreplaces.removeAllElements();
+		for(Region edge : TripManager.getinstance().getGraph().getMap().keySet()) {
+			exploreplaces.addElement(edge.getName());
+		}}
+	}
+	
 }
