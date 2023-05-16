@@ -17,14 +17,14 @@ public class TripManager {
 	}
 
 	private TripManager() {
-		Region sisliRegion = new Region("Şişli", "sislilandmarks");
-		Region besiktasRegion = new Region("Beşiktaş", "besiktaslandmarks");
-		Region beyogluregion = new Region("Beyoğlu", "beyoglulandmarks");
-		Region uskudarregion = new Region("Üsküdar", "uskudarlandmarks");
-		Region kadikoyregion = new Region("Kadiköy", "kadikoylandmarks");
-		Region umraniyeregion = new Region("Ümraniye", "umraniyelandmarks");
-		Region fatihregion = new Region("Fatih", "fatihlandmarks");
-		Region malteperegion = new Region("Maltepe", "maltepelandmarks");
+		Region sisliRegion = new Region("Şişli", "Ihlamur Kasırları");
+		Region besiktasRegion = new Region("Beşiktaş", "Dolmabahçe Sarayı");
+		Region beyogluregion = new Region("Beyoğlu", "Galata Kulesi");
+		Region uskudarregion = new Region("Üsküdar", "Beylerbeyi Sarayı");
+		Region kadikoyregion = new Region("Kadiköy", "Boğa Heykeli");
+		Region umraniyeregion = new Region("Ümraniye", "Hekimbaşı Av Köşkü");
+		Region fatihregion = new Region("Fatih", "Ayasofya Camii");
+		Region malteperegion = new Region("Maltepe", "Maltepe Sahili");
 		Graph<Region> citymap = new Graph<Region>();
 		citymap.addVertex(besiktasRegion);
 		citymap.addVertex(sisliRegion);
