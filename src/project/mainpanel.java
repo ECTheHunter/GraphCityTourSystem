@@ -294,6 +294,7 @@ public class mainpanel extends JFrame {
 				fillup();
 				regionlabel.setText("");
 				//landlbl.setText("");
+				previousRegion = new Region("Demo","");
 			}
 			
 		});
