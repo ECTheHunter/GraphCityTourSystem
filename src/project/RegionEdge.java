@@ -16,6 +16,7 @@ public class RegionEdge extends Edge<Region> {
 	}
 	public RegionEdge() {
 		// TODO Auto-generated constructor stub
+		
 	}
 
 
