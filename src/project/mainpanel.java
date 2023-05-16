@@ -1,6 +1,7 @@
 package project;
 import java.awt.BorderLayout;
 
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -19,6 +20,9 @@ import javax.swing.ListSelectionModel;
 import javax.swing.Box;
 import javax.swing.DefaultListModel;
 import javax.swing.border.LineBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
 import java.awt.Component;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -236,13 +240,26 @@ public class mainpanel extends JFrame {
 	panel.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
 	panell= panel;
 	panel.setLayout(null);
-	
 	Box box2 = Box.createHorizontalBox();
 	box2.setBounds(534, 11, 305, 40);
 	getContentPane().add(box2);
 	box2.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
 	box22=box2;
 	setVisible(true);
+	listexplore.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+			public void valueChanged(ListSelectionEvent e) {
+				 String name = (String)listexplore.getSelectedValue();
+				for(Region edge : TripManager.getinstance().getGraph().getMap().keySet()) {
+					if(edge.getName()==name) {
+						timelbl.setText(TripManager.getinstance().getGraph().getTimes(edge, previousRegion)+" min");
+						dstncl.setText(TripManager.getinstance().getGraph().getDistances(edge, previousRegion)+" km");
+						landlbl.setText(edge.getLandmarks());
+					} 
+				}
+				
+			}
+			
+		});
 		starttripB.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			    String name = (String)listexplore.getSelectedValue();
@@ -258,7 +275,7 @@ public class mainpanel extends JFrame {
 						totalTimes+=TripManager.getinstance().getGraph().getTimes(edge, previousRegion);
 						dstncl.setText(TripManager.getinstance().getGraph().getDistances(edge, previousRegion)+" km");
 						TotalDistances+= TripManager.getinstance().getGraph().getDistances(edge, previousRegion);
-						landlbl.setText(previousRegion.getLandmarks());
+						landlbl.setText(edge.getLandmarks());
 						previousRegion = edge;
 						TripManager.getinstance().addtovisitedplaces(edge);
 						
@@ -293,11 +310,12 @@ public class mainpanel extends JFrame {
 				TotalDistances=0;
 				fillup();
 				regionlabel.setText("");
-				//landlbl.setText("");
+				landlbl.setText("");
 				previousRegion = new Region("Demo","");
 			}
 			
 		});
+		
 	}
 	public void fillup() {
 		if(exploreplaces.size()!=8) {
