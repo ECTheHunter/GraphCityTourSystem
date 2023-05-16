@@ -301,7 +301,7 @@ public class mainpanel extends JFrame {
 				int b = TripManager.getinstance().getVisitedplaces().size();
 				for (int i =0;i<b;i++) {
 					if(TripManager.getinstance().getVisitedplaces()!=null)
-					visitedplaces.addElement(TripManager.getinstance().getVisitedplaces().pop().getName());	
+					visitedplaces.addElement(TripManager.getinstance().getVisitedplaces().pop().getLandmarks());	
 				}
 				
 				timelbl.setText(totalTimes+"min (Total)");
